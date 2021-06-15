@@ -1,6 +1,6 @@
 from flask import Flask
 from app.users.views import users_bp
-from app.devices.views import devices_page
+from app.devices.views import devices_bp, pins_bp
 from config.database import initialize_db
 
 app = Flask(__name__)
@@ -19,7 +19,8 @@ def main():
 
 # Register Blueprint
 app.register_blueprint(users_bp)
-app.register_blueprint(devices_page)
+app.register_blueprint(devices_bp)
+app.register_blueprint(pins_bp)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
