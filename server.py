@@ -5,7 +5,7 @@ from config.database import initialize_db
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:password@localhost/agnes_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost/agnes_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'nsx)e96@!)p*=)%adhig8mv$5x0psx38ywj(@k18zx70pu=4yq'
 

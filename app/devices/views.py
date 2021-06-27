@@ -63,6 +63,16 @@ def update_device(id):
     return jsonify({'response': f'Device {device.name} has been updated!'}), 200
 
 
+@devices_bp.route('/devices/<id>', methods=['DELETE'])
+def delete_devices(id):
+    device = Devices.query.filter_by(id=id).first()
+    if not device:
+        return jsonify({'message': 'No device found!'}), 404
+
+    db.session.delete(device)
+    db.session.commit()
+    return jsonify({'message': 'The device has been deleted!'}), 200
+
 """ Pin endpoints """
 
 
@@ -125,3 +135,13 @@ def update_pin(id):
     db.session.commit()
     return jsonify({'response': f'Pin {pin.name} has been updated!'}), 200
 
+
+@pins_bp.route('/pins/<id>', methods=['DELETE'])
+def delete_pin(id):
+    pin = Pins.query.filter_by(id=id).first()
+    if not pin:
+        return jsonify({'message': 'No pin found!'}), 404
+
+    db.session.delete(pin)
+    db.session.commit()
+    return jsonify({'message': 'The pin has been deleted!'}), 200
